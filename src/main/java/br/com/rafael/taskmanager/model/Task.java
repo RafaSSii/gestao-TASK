@@ -7,10 +7,8 @@ public class Task {
     private String description;
     private String status;
 
-    // 🔥 CONSTRUTOR VAZIO (OBRIGATÓRIO)
     public Task() {}
 
-    // 🔥 CONSTRUTOR COM PARÂMETROS
     public Task(String title, String description, String status) {
         this.title = title;
         this.description = description;

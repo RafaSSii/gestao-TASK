@@ -3,36 +3,61 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17"
+<BorderPane xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="br.com.rafael.taskmanager.controller.TaskController"
-            prefHeight="500.0" prefWidth="700.0">
+            stylesheets="@style.css">
 
-    <children>
+    <top>
+        <VBox spacing="15" alignment="CENTER">
 
-        <VBox spacing="10" layoutX="50" layoutY="30">
+            <Label text="Task Manager" styleClass="title-label"/>
 
-            <Label text="Gestor de Tarefas" />
+            <HBox spacing="20" alignment="CENTER">
 
-            <TextField fx:id="titleField" promptText="Título" />
-            <TextField fx:id="descriptionField" promptText="Descrição" />
-            <TextField fx:id="statusField" promptText="Status" />
+                <VBox styleClass="card">
+                    <Label text="Total"/>
+                    <Label fx:id="totalLabel" styleClass="card-number"/>
+                </VBox>
 
-            <Button text="Salvar" onAction="#saveTask"/>
+                <VBox styleClass="card card-pending">
+                    <Label text="Pendentes"/>
+                    <Label fx:id="pendingLabel" styleClass="card-number"/>
+                </VBox>
 
-            <HBox spacing="10">
-                <Button text="Editar" onAction="#updateTask"/>
-                <Button text="Deletar" onAction="#deleteTask"/>
+                <VBox styleClass="card card-done">
+                    <Label text="Concluídas"/>
+                    <Label fx:id="doneLabel" styleClass="card-number"/>
+                </VBox>
+
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" alignment="CENTER" styleClass="main-container">
+
+            <HBox spacing="15">
+                <TextField fx:id="titleField" promptText="Título"/>
+                <TextField fx:id="descriptionField" promptText="Descrição"/>
+                <TextField fx:id="statusField" promptText="Status"/>
             </HBox>
 
-            <TableView fx:id="taskTable" prefHeight="250" prefWidth="500">
+            <HBox spacing="15">
+                <Button text="Salvar" onAction="#saveTask" styleClass="btn-primary"/>
+                <Button text="Editar" onAction="#updateTask" styleClass="btn-warning"/>
+                <Button text="Concluir" onAction="#completeTask" styleClass="btn-success"/>
+                <Button text="Deletar" onAction="#deleteTask" styleClass="btn-danger"/>
+            </HBox>
+
+            <TableView fx:id="taskTable" prefHeight="300">
                 <columns>
-                    <TableColumn fx:id="titleColumn" text="Título" prefWidth="250"/>
+                    <TableColumn fx:id="titleColumn" text="Título" prefWidth="300"/>
                     <TableColumn fx:id="statusColumn" text="Status" prefWidth="200"/>
                 </columns>
             </TableView>
 
         </VBox>
-    </children>
+    </center>
 
-</AnchorPane>
+</BorderPane>
