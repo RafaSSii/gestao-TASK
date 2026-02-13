@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="br.com.rafael.taskmanager.controller.TaskController"
+            prefHeight="500.0" prefWidth="700.0">
+
+    <children>
+
+        <VBox spacing="10" layoutX="50" layoutY="30">
+
+            <Label text="Gestor de Tarefas" />
+
+            <TextField fx:id="titleField" promptText="Título" />
+            <TextField fx:id="descriptionField" promptText="Descrição" />
+            <TextField fx:id="statusField" promptText="Status" />
+
+            <Button text="Salvar" onAction="#saveTask"/>
+
+            <HBox spacing="10">
+                <Button text="Editar" onAction="#updateTask"/>
+                <Button text="Deletar" onAction="#deleteTask"/>
+            </HBox>
+
+            <TableView fx:id="taskTable" prefHeight="250" prefWidth="500">
+                <columns>
+                    <TableColumn fx:id="titleColumn" text="Título" prefWidth="250"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="200"/>
+                </columns>
+            </TableView>
+
+        </VBox>
+    </children>
+
+</AnchorPane>
