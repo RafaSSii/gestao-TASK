@@ -3,61 +3,85 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="br.com.rafael.taskmanager.controller.TaskController"
-            stylesheets="@style.css">
+<StackPane fx:id="rootPane"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="br.com.rafael.taskmanager.controller.TaskController"
+           stylesheets="@style.css">
 
-    <top>
-        <VBox spacing="15" alignment="CENTER">
+    <VBox spacing="20" styleClass="main-container">
 
-            <Label text="Task Manager" styleClass="title-label"/>
+        <Label text="Task Manager" styleClass="title-label"/>
 
-            <HBox spacing="20" alignment="CENTER">
+        <!-- FORM -->
+        <HBox spacing="10">
+            <TextField fx:id="titleField"
+                       promptText="Título da tarefa"/>
 
-                <VBox styleClass="card">
-                    <Label text="Total"/>
-                    <Label fx:id="totalLabel" styleClass="card-number"/>
-                </VBox>
+            <TextField fx:id="descriptionField"
+                       promptText="Descrição"/>
 
-                <VBox styleClass="card card-pending">
-                    <Label text="Pendentes"/>
-                    <Label fx:id="pendingLabel" styleClass="card-number"/>
-                </VBox>
+            <ComboBox fx:id="priorityCombo"
+                      promptText="Prioridade"/>
 
-                <VBox styleClass="card card-done">
-                    <Label text="Concluídas"/>
-                    <Label fx:id="doneLabel" styleClass="card-number"/>
-                </VBox>
+            <Button text="Adicionar"
+                    onAction="#saveTask"
+                    styleClass="btn-primary"/>
+        </HBox>
 
-            </HBox>
-        </VBox>
-    </top>
+        <!-- DASHBOARD -->
+        <HBox spacing="15">
+            <VBox styleClass="card card-pending">
+                <Label text="Pendentes"/>
+                <Label fx:id="pendingLabel" styleClass="card-number"/>
+            </VBox>
 
-    <center>
-        <VBox spacing="20" alignment="CENTER" styleClass="main-container">
+            <VBox styleClass="card card-done">
+                <Label text="Concluídas"/>
+                <Label fx:id="doneLabel" styleClass="card-number"/>
+            </VBox>
 
-            <HBox spacing="15">
-                <TextField fx:id="titleField" promptText="Título"/>
-                <TextField fx:id="descriptionField" promptText="Descrição"/>
-                <TextField fx:id="statusField" promptText="Status"/>
-            </HBox>
+            <VBox styleClass="card">
+                <Label text="Total"/>
+                <Label fx:id="totalLabel" styleClass="card-number"/>
+            </VBox>
+        </HBox>
 
-            <HBox spacing="15">
-                <Button text="Salvar" onAction="#saveTask" styleClass="btn-primary"/>
-                <Button text="Editar" onAction="#updateTask" styleClass="btn-warning"/>
-                <Button text="Concluir" onAction="#completeTask" styleClass="btn-success"/>
-                <Button text="Deletar" onAction="#deleteTask" styleClass="btn-danger"/>
-            </HBox>
+        <!-- TABELA -->
+        <TableView fx:id="taskTable" VBox.vgrow="ALWAYS">
 
-            <TableView fx:id="taskTable" prefHeight="300">
-                <columns>
-                    <TableColumn fx:id="titleColumn" text="Título" prefWidth="300"/>
-                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="200"/>
-                </columns>
-            </TableView>
+            <columns>
 
-        </VBox>
-    </center>
+                <TableColumn fx:id="titleColumn"
+                             text="Título"
+                             prefWidth="180"/>
 
-</BorderPane>
+                <TableColumn fx:id="statusColumn"
+                             text="Status"
+                             prefWidth="120"/>
+
+                <TableColumn fx:id="priorityColumn"
+                             text="Prioridade"
+                             prefWidth="130"/>
+
+                <TableColumn fx:id="dateColumn"
+                             text="Criado em"
+                             prefWidth="160"/>
+
+            </columns>
+
+        </TableView>
+
+        <!-- BOTÕES -->
+        <HBox spacing="10">
+            <Button text="Concluir"
+                    onAction="#completeTask"
+                    styleClass="btn-success"/>
+
+            <Button text="Excluir"
+                    onAction="#deleteTask"
+                    styleClass="btn-danger"/>
+        </HBox>
+
+    </VBox>
+
+</StackPane>
