@@ -25,6 +25,7 @@ Ideal para estudos de desenvolvimento desktop com JavaFX e integração com banc
 🎯 Organização simples e eficiente
 
 🛠️ Tecnologias utilizadas
+----------------
 
 ☕ Java 17+
 
