@@ -40,6 +40,7 @@ Ideal para estudos de desenvolvimento desktop com JavaFX e integração com banc
 🎨 CSS para estilização
 
 📦 Pré-requisitos
+---------------
 
 Antes de executar o projeto, instale:
 
